@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:proyecto_moviles/src/login/login_controller.dart';
 import 'package:proyecto_moviles/src/utils/my_colors.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  LoginController _con = new LoginController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      _con.init(context); //se inicializa el controlador
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,10 +58,10 @@ class _LoginPageState extends State<LoginPage> {
     return Text(
       'LOGIN',
       style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 22,
-        color: Colors.white,
-      ),
+          fontWeight: FontWeight.bold,
+          fontSize: 22,
+          color: Colors.white,
+          fontFamily: 'Roboto'),
     );
   }
 
@@ -74,10 +87,13 @@ class _LoginPageState extends State<LoginPage> {
         SizedBox(
           width: 7,
         ),
-        Text(
-          'Regístrate',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: MyColors.primaryColor),
+        GestureDetector(
+          onTap: _con.goToRegisterPage,
+          child: Text(
+            'Regístrate',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: MyColors.primaryColor),
+          ),
         ),
       ],
     );
