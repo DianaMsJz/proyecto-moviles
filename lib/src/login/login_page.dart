@@ -39,14 +39,16 @@ class _LoginPageState extends State<LoginPage> {
               top: 60,
               left: 25,
             ), //Positioned sirve para ubicar elementos
-            Column(
-              children: [
-                _imageBanner(),
-                _textFieldEmail(),
-                _textFieldPassword(),
-                _buttonLogin(),
-                _textDontHaveAccount()
-              ],
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  _imageBanner(),
+                  _textFieldEmail(),
+                  _textFieldPassword(),
+                  _buttonLogin(),
+                  _textDontHaveAccount()
+                ],
+              ),
             ),
           ],
         ),
