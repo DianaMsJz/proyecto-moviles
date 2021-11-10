@@ -2,12 +2,13 @@
 
 const promise = require('bluebird');
 const options = {
-    promiseLib: primise,
+    promiseLib: promise,
     query: (e) => {}
 }
+
 const pgp = require('pg-promise')(options);
 const types = pgp.pg.types;
-types.setTypeParser(1114, function(stringValue){
+types.setTypeParser(1114, function(stringValue) {
     return stringValue;
 });
 
