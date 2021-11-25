@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:proyecto_moviles/src/register/register_controller.dart';
+import 'package:proyecto_moviles/src/pages/register/register_controller.dart';
 import 'package:proyecto_moviles/src/utils/my_colors.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -62,7 +62,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     _textFieldLastName(),
                     _textFieldPhone(),
                     _textFieldPassword(),
-                    _textFieldConfirmPassword()
+                    _textFieldConfirmPassword(),
+                    _buttonRegister()
                   ],
                 ),
               ),
@@ -106,9 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
       child: ElevatedButton(
-        onPressed: () {
-          _con.register;
-        },
+        onPressed: _con.register,
         child: Text('REGISTRARSE'),
         style: ElevatedButton.styleFrom(
             primary: MyColors.primaryColor,

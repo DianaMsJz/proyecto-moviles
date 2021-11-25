@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:proyecto_moviles/src/login/login_controller.dart';
+import 'package:proyecto_moviles/src/pages/login/login_controller.dart';
 import 'package:proyecto_moviles/src/utils/my_colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -106,9 +106,7 @@ class _LoginPageState extends State<LoginPage> {
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
       child: ElevatedButton(
-        onPressed: () {
-          _con.login;
-        },
+        onPressed: _con.login,
         child: Text('INGRESAR'),
         style: ElevatedButton.styleFrom(
             primary: MyColors.primaryColor,
