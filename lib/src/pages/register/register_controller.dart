@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_moviles/src/models/response_api.dart';
 import 'package:proyecto_moviles/src/models/user.dart';
 import 'package:proyecto_moviles/src/provider/users_provider.dart';
+import 'package:proyecto_moviles/src/utils/my_snackbar.dart';
 
 class RegisterController {
   BuildContext context;
@@ -27,7 +28,26 @@ class RegisterController {
     String phone = phoneController.text.trim();
     String password = passwordController.text.trim();
     String confirmPassword = confirmPasswordController.text.trim();
-
+    //validar que no haya campos vacíos
+    if (email.isEmpty ||
+        name.isEmpty ||
+        lastname.isEmpty ||
+        phone.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty) {
+      MySnackbar.show(context, 'Debes ingresar todos los campos');
+      return;
+    }
+    //validar que el password coincida
+    if (confirmPassword != password) {
+      MySnackbar.show(context, 'Las contraseñas no coinciden');
+      return;
+    }
+    if (password.length < 6) {
+      MySnackbar.show(
+          context, 'Las contraseña debe tener al menos 6 caracteres');
+      return;
+    }
     User user = new User(
         email: email,
         name: name,
@@ -37,13 +57,11 @@ class RegisterController {
 
     ResponseApi responseApi = await usersProvider.create(
         user); //se espera la respuesta al mandar la petición para crear un usuario
+    MySnackbar.show(
+        context,
+        responseApi
+            .message); //este mensaje de ok si se cumplen las validaciones
 
     print('RESPUESTA: ${responseApi.toJson()}');
-    /*print(email);
-    print(name);
-    print(lastname);
-    print(phone);
-    print(password);
-    print(confirmPassword);*/
   }
 }
