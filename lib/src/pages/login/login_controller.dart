@@ -27,7 +27,10 @@ class LoginController {
     //Trim elimina espacios en blanco
     String password = passwordController.text.trim();
     ResponseApi responseApi = await usersProvider.login(email, password);
+    print('Respuesta object: ${responseApi}');
+    print('Respuesta: ${responseApi.toJson()}');
     MySnackbar.show(context, responseApi.message);
+    
 
   }
 
