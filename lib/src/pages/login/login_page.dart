@@ -26,8 +26,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity, //para centrar la imagen
+        width: double.infinity, //para centrar el contenedor
         child: Stack(
+          //stack para sobreponer objetos
           children: [
             Positioned(
               top: -90,

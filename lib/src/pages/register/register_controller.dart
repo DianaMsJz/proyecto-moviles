@@ -17,6 +17,7 @@ class RegisterController {
   UsersProvider usersProvider = new UsersProvider();
 
   Future init(BuildContext context) {
+    //future para poder utilizar await
     this.context = context;
     usersProvider.init(context);
   }
@@ -57,6 +58,7 @@ class RegisterController {
 
     ResponseApi responseApi = await usersProvider.create(
         user); //se espera la respuesta al mandar la petición para crear un usuario
+
     MySnackbar.show(
         context,
         responseApi
