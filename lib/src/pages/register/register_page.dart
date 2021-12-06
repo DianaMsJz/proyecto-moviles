@@ -85,9 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget _iconBack() {
     return IconButton(
-      onPressed: () {
-        Navigator.pushNamed(context, 'login');
-      },
+      onPressed: _con.back,
       icon: Icon(Icons.arrow_back_ios),
       color: Colors.white,
     );

@@ -20,7 +20,7 @@ class LoginController {
     this.context = context;
     await usersProvider.init(context);
     User user = User.fromJson(await _sharedPref.read('user') ?? {});
-
+    //si está la sesion guardada lo manda directo a la lista de productos
     if (user?.sessionToken != null) {
       Navigator.pushNamedAndRemoveUntil(
           context, 'client/products/list', (route) => false);
@@ -40,8 +40,8 @@ class LoginController {
 
     print('Respuesta object: ${responseApi}');
     print('Respuesta: ${responseApi.toJson()}');
-    //si no hubo fallos en el login
 
+    //si no hubo fallos en el login
     if (responseApi.success) {
       User user = User.fromJson(responseApi.data); //obteniendo el usuario
       // se almacena el usuario, 'user' = key

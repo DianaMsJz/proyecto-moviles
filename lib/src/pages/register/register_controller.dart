@@ -64,6 +64,17 @@ class RegisterController {
         responseApi
             .message); //este mensaje de ok si se cumplen las validaciones
 
+    if (responseApi.success) {
+      Future.delayed(Duration(seconds: 3), () {
+        //espera 3 segundos para ejecutar el método
+        Navigator.pushReplacementNamed(context, 'login');
+      });
+    }
+
     print('RESPUESTA: ${responseApi.toJson()}');
+  }
+
+  void back() {
+    Navigator.pop(context);
   }
 }
