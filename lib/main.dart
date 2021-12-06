@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:proyecto_moviles/src/pages/client/products/list/client_products_list_page.dart';
 import 'package:proyecto_moviles/src/pages/login/login_page.dart';
 import 'package:proyecto_moviles/src/pages/register/register_page.dart';
+import 'package:proyecto_moviles/src/pages/restaurant/orders/list/restaurant_orders_list_page.dart';
 import 'package:proyecto_moviles/src/utils/my_colors.dart';
 
 void main() {
@@ -26,7 +27,11 @@ class _MyAppState extends State<MyApp> {
         'login': (BuildContext context) => LoginPage(),
         'register': (BuildContext context) => RegisterPage(),
         'client/products/list': (BuildContext context) =>
-            ClientProductsListPage()
+            ClientProductsListPage(),
+        'restaurant/orders/list': (BuildContext context) =>
+            RestaurantOrdersListPage(),
+        'delivery/orders/list': (BuildContext context) =>
+            ClientProductsListPage(),
       },
       theme: ThemeData(
         primaryColor: MyColors.primaryColor,
